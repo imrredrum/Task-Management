@@ -1,15 +1,13 @@
-import { NumberInput as ChakraNumberInput } from "@chakra-ui/react"
-import * as React from "react"
-
-export interface NumberInputProps extends ChakraNumberInput.RootProps {}
+import { NumberInput as ChakraNumberInput } from '@chakra-ui/react'
+import * as React from 'react'
 
 export const NumberInputRoot = React.forwardRef<
   HTMLDivElement,
-  NumberInputProps
+  ChakraNumberInput.RootProps
 >(function NumberInput(props, ref) {
   const { children, ...rest } = props
   return (
-    <ChakraNumberInput.Root ref={ref} variant="outline" {...rest}>
+    <ChakraNumberInput.Root ref={ref} variant='outline' {...rest}>
       {children}
       <ChakraNumberInput.Control>
         <ChakraNumberInput.IncrementTrigger />

@@ -1,36 +1,100 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 簡易任務管理前端專案
 
-## Getting Started
+## 專案需求
 
-First, run the development server:
+1. 通用
+   1. [x] 可新增自訂任務
+   2. [x] 可修改已存在任務
+   3. [x] 可任意變更任務狀態
+   4. [x] 可刪除任務
+   5. [x] 即時計算任務完成狀況
+   6. [x] 任務資料持久化
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 技術選用
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- React (Next.js App Router)：現代化頁面管理。
+- TypeScript：型別安全。
+- Zod：表單驗證。
+- Chakra UI：快速 UI 建構。
+- Zustand：全域狀態管理（Task 儲存與操作）。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 環境設置
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 前置需求
 
-## Learn More
+- Node.js (建議版本 14 以上)
+- Docker (建議版本 20 以上)
+- Docker Compose (建議版本 1.27 以上)
 
-To learn more about Next.js, take a look at the following resources:
+### 安裝步驟
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. 將專案複製到本地端：
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+   ```sh
+   git clone <專案網址>
+   cd <專案目錄>
+   ```
 
-## Deploy on Vercel
+#### 進行部署
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+##### 使用 Docker 部署
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. 建立並啟動 Docker 容器：
+
+   ```sh
+   docker-compose up --build
+   ```
+
+##### 使用 npm 指令 (不使用容器)
+
+1. 安裝相依套件：
+
+   ```sh
+   npm install --legacy-peer-deps
+   ```
+
+2. 打包編譯伺服器程式碼：
+
+   ```sh
+   npm run build
+   ```
+
+3. 透過 nginx 等工具 serve ./out/ 即可
+
+#### 建立開發環境
+
+##### 使用 Docker 開發
+
+1. 建立並啟動 Docker 容器：
+
+   ```sh
+   docker-compose up --build
+   ```
+
+2. 進入 Docker 容器：
+
+   ```sh
+   docker-compose exec app sh
+   ```
+
+3. 在容器內執行應用服務：
+
+   ```sh
+   npm run dev
+   ```
+
+##### 本地開發環境
+
+1. 安裝相依套件：
+
+   ```sh
+   npm install
+   ```
+
+2. 啟動開發伺服器：
+
+   ```sh
+   npm run dev
+   ```
+
+3. 開啟瀏覽器並訪問 <http://localhost:3000> 查看應用服務。
