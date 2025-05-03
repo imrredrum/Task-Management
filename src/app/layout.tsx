@@ -1,4 +1,5 @@
 import { Provider } from '@/components/ui/provider'
+import { Toaster } from '@/components/ui/toaster'
 
 export default function RootLayout({
   children,
@@ -8,7 +9,10 @@ export default function RootLayout({
   return (
     <html lang='zh-Hant-TW' suppressHydrationWarning>
       <body>
-        <Provider>{children}</Provider>
+        <Provider forcedTheme='light'>
+          {children}
+          <Toaster />
+        </Provider>
       </body>
     </html>
   )
